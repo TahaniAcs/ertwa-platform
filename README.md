@@ -4,7 +4,7 @@ A specialized technical platform operating under the umbrella of **Taqat Certifi
 
 ## 🔗 Live Demo
 You can explore the live, fully interactive platform via the following link:
-[Visit Ertwaa Platform] ([https:tahaniacs.github.io/ertiwa-platform/]) 
+[Visit Ertwaa Platform] ([https://tahaniacs.github.io/ertiwa-platform/]) 
 
 ---
 
