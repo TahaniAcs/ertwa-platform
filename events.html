@@ -52,7 +52,7 @@
                                 <span>📍 أونلاين</span>
                             </div>
                             <div class="card-footer">
-                                <button class="btn-register" onclick="alert('تم تحويلك لبوابة التسجيل')">سجل الآن</button>
+                                <button class="btn-register" onclick="simulateRegistration(this)">سجل الآن</button>
                                 <span class="participants">120 مشارك</span>
                             </div>
                         </div>
@@ -72,7 +72,7 @@
                                 <span>📍 الطائف</span>
                             </div>
                             <div class="card-footer">
-                                <button class="btn-register" onclick="alert('تم تحويلك لبوابة التسجيل')">سجل الآن</button>
+                                <button class="btn-register" onclick="simulateRegistration(this)">سجل الآن</button>
                                 <span class="participants">85 مشارك</span>
                             </div>
                         </div>
@@ -92,7 +92,7 @@
                                 <span>📍 أونلاين</span>
                             </div>
                             <div class="card-footer">
-                                <button class="btn-register" onclick="alert('تم تحويلك لبوابة التسجيل')">سجل الآن</button>
+                                <button class="btn-register" onclick="simulateRegistration(this)">سجل الآن</button>
                                 <span class="participants">200 مشارك</span>
                             </div>
                         </div>
@@ -101,7 +101,7 @@
                     <article class="event-card">
                         <div class="card-image">
                             <img src="images/ai-event.png" alt="ندوة الذكاء الاصطناعي">
-                            <span class="category-tag" >ذكاء اصطناعي</span>
+                            <span class="category-tag">ذكاء اصطناعي</span>
                         </div>
                         <div class="card-content">
                             <h3>مستقبل الذكاء الاصطناعي</h3>
@@ -112,7 +112,7 @@
                                 <span>📍 أونلاين</span>
                             </div>
                             <div class="card-footer">
-                                <button class="btn-register" onclick="alert('تم تحويلك لبوابة التسجيل')">سجل الآن</button>
+                                <button class="btn-register" onclick="simulateRegistration(this)">سجل الآن</button>
                                 <span class="participants">340 مشارك</span>
                             </div>
                         </div>
@@ -124,5 +124,26 @@
     </main>
 
     <script src="script.js"></script>
+
+    <script>
+        function simulateRegistration(button) {
+            // 1. تغيير مظهر النص وحالة الزر لمنع الضغط المتكرر
+            button.textContent = "تم التسجيل ✓";
+            button.style.background = "#15803d"; // تحويله للون الأخضر الداكن المعتمد للنجاح
+            button.style.pointerEvents = "none"; // تجميد الزر
+            button.style.boxShadow = "none";
+
+            // 2. الوصول لعداد المشاركين المجاور للزر وزيادته تلقائياً بمقدار 1
+            const participantsElement = button.nextElementSibling;
+            if (participantsElement) {
+                const currentCount = parseInt(participantsElement.textContent, 10);
+                if (!isNaN(currentCount)) {
+                    participantsElement.textContent = (currentCount + 1) + " مشارك";
+                    participantsElement.style.color = "var(--jungle-green)";
+                    participantsElement.style.fontWeight = "700";
+                }
+            }
+        }
+    </script>
 </body>
 </html>
