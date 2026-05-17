@@ -392,6 +392,13 @@ html {
 .read-more:hover {
     color: var(--jungle-green);
 }
+/* استجابة الشاشات الصغيرة */
+@media (max-width: 992px) {
+    .specialized-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+    .specialized-grid { grid-template-columns: 1fr; }
+}
 /* قسم الفعاليات القادمة  */
 /* تنسيق قسم الفعاليات */
 .events-section {
