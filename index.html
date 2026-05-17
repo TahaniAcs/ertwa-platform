@@ -17,11 +17,12 @@
                 <img src="images/logo.png" alt="لوقو ارتواء">
             </div>
             <nav class="nav-links">
-    <a href="index.html" class="active">الرئيسية</a>
-    <a href="#about-section">من نحن</a> <a href="structure.html">الهيكل التنظيمي</a>
-    <a href="#departments-section">الأقسام</a>
-    <a href="#events-section">الفعاليات</a>
-    <a href="#contact-section">تواصل معنا</a>
+                <a href="index.html" class="active">الرئيسية</a>
+                <a href="#about-section">من نحن</a> 
+                <a href="structure.html">الهيكل التنظيمي</a>
+                <a href="#departments-section">الأقسام</a>
+                <a href="#events-section">الفعاليات</a>
+                <a href="#contact-section">تواصل معنا</a>
             </nav>
         </div>
         <button class="btn-login" id="loginBtn" onclick="window.location.href='login.html'">تسجيل الدخول</button>
@@ -33,10 +34,9 @@
                 <h1>منصة <span class="highlight">ارتواء</span></h1>
                 <p>منصة تقنية متخصصة تحت مظلة معهد طاقات المعتمد للتدريب، تهدف إلى تمكين الأفراد والشركات من خلال تقديم محتوى تقني متطور.</p>
                 <div class="hero-btns">
-    <button class="btn-start" onclick="window.location.href='register.html'">ابدأ الآن ←</button>
-    
-    <button class="btn-outline" onclick="window.location.href='#events-section'">الفعاليات القادمة</button>
-</div>
+                    <button class="btn-start" onclick="window.location.href='register.html'">ابدأ الآن ←</button>
+                    <button class="btn-outline" onclick="window.location.href='#events-section'">الفعاليات القادمة</button>
+                </div>
             </div>
             <div class="wave-container">
                 <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -164,6 +164,7 @@
                     <button class="btn-all-events" onclick="window.location.href='events.html'">جميع الفعاليات ←</button>
                 </div>
                 <div class="events-grid">
+                    
                     <article class="event-card">
                         <div class="card-image">
                             <img src="images/web-dev-event.png" alt="ورشة تطوير المواقع">
@@ -178,7 +179,7 @@
                                 <span>📍 أونلاين</span>
                             </div>
                             <div class="card-footer">
-                                <button class="btn-register">سجل الآن</button>
+                                <button class="btn-register" onclick="simulateRegistration(this)">سجل الآن</button>
                                 <span class="participants">120 مشارك</span>
                             </div>
                         </div>
@@ -198,7 +199,7 @@
                                 <span>📍 الطائف</span>
                             </div>
                             <div class="card-footer">
-                                <button class="btn-register">سجل الآن</button>
+                                <button class="btn-register" onclick="simulateRegistration(this)">سجل الآن</button>
                                 <span class="participants">85 مشارك</span>
                             </div>
                         </div>
@@ -218,7 +219,7 @@
                                 <span>📍 أونلاين</span>
                             </div>
                             <div class="card-footer">
-                                <button class="btn-register">سجل الآن</button>
+                                <button class="btn-register" onclick="simulateRegistration(this)">سجل الآن</button>
                                 <span class="participants">200 مشارك</span>
                             </div>
                         </div>
@@ -339,5 +340,25 @@
     </footer>
 
     <script src="script.js"></script>
+
+    <script>
+        function simulateRegistration(button) {
+            button.textContent = "تم التسجيل ✓";
+            button.style.background = "#15803d"; // تغيير لون الخلفية للأخضر الغامق للنجاح
+            button.style.pointerEvents = "none"; // تجميد الزر لمنع الضغط المتكرر
+            button.style.boxShadow = "none";
+
+            // زيادة العداد الفوري بجانب الزر
+            const participantsElement = button.nextElementSibling;
+            if (participantsElement) {
+                const currentCount = parseInt(participantsElement.textContent, 10);
+                if (!isNaN(currentCount)) {
+                    participantsElement.textContent = (currentCount + 1) + " مشارك";
+                    participantsElement.style.color = "var(--jungle-green)";
+                    participantsElement.style.fontWeight = "700";
+                }
+            }
+        }
+    </script>
 </body>
 </html>
