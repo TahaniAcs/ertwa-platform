@@ -1,4 +1,4 @@
-# Ertwaa Digital Platform 🌿
+# Ertwa Digital Platform 🌿
 
 A specialized technical platform operating under the umbrella of **Taqat Certified Training Institute**. Ertwaa aims to empower individuals and organizations by delivering advanced technical content and fostering a vibrant digital community that quenches the passion for knowledge and technology.
 
