@@ -350,4 +350,29 @@ document.addEventListener('DOMContentLoaded', function() {
 
         observer.observe(statsSection);
     }
+    // 15. معالجة التسجيل التفاعلي الشامل للفعاليات (الرئيسية + صفحة الفعاليات)
+    // [تعديل احترافي] استخدام تفويض الأحداث لضمان عمل الأزرار في كافة واجهات المنصة
+    document.addEventListener('click', function(e) {
+        // التأكد من أن العنصر المضغوط هو زر التسجيل
+        if (e.target && e.target.classList.contains('btn-register')) {
+            const button = e.target;
+            
+            // 1. تغيير مظهر ونص الزر فوراً لإشعار المستخدم بالنجاح
+            button.textContent = "تم التسجيل ✓";
+            button.style.background = "#15803d"; // الأخضر الداكن المعتمد لحالات النجاح
+            button.style.pointerEvents = "none"; // تجميد الزر لمنع الإرسال المتكرر
+            button.style.boxShadow = "none";
+
+            // 2. الوصول لعداد المشاركين المتواجد بجانب الزر وزيادته تلقائياً بمقدار 1
+            const participantsElement = button.nextElementSibling;
+            if (participantsElement) {
+                const currentCount = parseInt(participantsElement.textContent, 10);
+                if (!isNaN(currentCount)) {
+                    participantsElement.textContent = (currentCount + 1) + " مشارك";
+                    participantsElement.style.color = "var(--jungle-green)"; // إضاءة العداد بلون الهوية
+                    participantsElement.style.fontWeight = "700";
+                }
+            }
+        }
+    });
 });
