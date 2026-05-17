@@ -962,3 +962,138 @@ html {
     width: 100%;
     margin-top: 5px;
 }
+/* ======================================================== 
+   التجاوب الكامل مع الشاشات المتنقلة والتابلت (Mobile Responsiveness)
+   ======================================================== */
+
+/* 1. الشاشات المتوسطة وأجهزة التابلت (مثل الآيباد) */
+@media (max-width: 1024px) {
+    .main-header {
+        padding: 10px 4%;
+    }
+    .header-right-section {
+        gap: 20px;
+    }
+    
+    /* إعادة توزيع الهيرو بصرياً */
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 140px 5% 100px;
+        background-position: bottom center;
+        background-size: 55%;
+    }
+    .hero-content {
+        text-align: center;
+        max-width: 100%;
+        margin-bottom: 40px;
+    }
+    .hero-btns {
+        justify-content: center;
+    }
+
+    /* تحويل الفعاليات إلى بطاقتين في السطر بدلاً من 3 */
+    .events-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    /* تحويل الإحصائيات إلى 3 أعمدة بدلاً من 6 */
+    .stats-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+    }
+
+    /* تحويل الخدمات الرقمية إلى بطاقتين */
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+}
+
+/* 2. شاشات الجوال والهواتف الذكية الصغيرة */
+@media (max-width: 768px) {
+    /* ضبط حجم نصوص العنوان الرئيسي لـ Hero ليتناسب مع أبعاد الشاشة */
+    .hero-content h1 {
+        font-size: 2.2rem;
+    }
+    .hero-content p {
+        font-size: 1rem;
+    }
+    .hero {
+        background-size: 75%;
+        padding-bottom: 220px;
+    }
+
+    /* تصغير العناوين الرئيسية لكافة الأقسام لتريح العين */
+    .dynamic-title, .section-title, .section-main-title, .services-main-title, .stats-main-title, .events-title {
+        font-size: 1.8rem !important;
+        margin-bottom: 30px;
+    }
+
+    /* تنظيم الهيدر والقائمة المنسدلة على الجوال */
+    .main-header {
+        height: auto;
+        padding: 15px 4%;
+        flex-direction: column;
+        gap: 15px;
+        position: relative;
+    }
+    .header-right-section {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .nav-links {
+        gap: 12px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .nav-links a {
+        font-size: 0.85rem;
+    }
+    .btn-login {
+        padding: 8px 20px;
+        font-size: 0.85rem;
+    }
+
+    /* [إصلاح حاسم] تحويل الأقسام، الفعاليات، والخدمات لعمود واحد منسدل بانسيابية */
+    .specialized-grid, 
+    .events-grid, 
+    .services-grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px;
+    }
+
+    /* جعل الإحصائيات تظهر في عمودين متوازيين بدلاً من التراكم الطولي المزعج */
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 15px;
+    }
+    .stat-card {
+        padding: 20px 10px;
+    }
+    .stat-number {
+        font-size: 1.8rem;
+    }
+
+    /* جعل أزرار الـ Hero تمتد بكامل العرض لسهولة الضغط بالإصبع */
+    .hero-btns {
+        flex-direction: column;
+        width: 100%;
+    }
+    .btn-start, .btn-outline {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* محاذاة ترويسة الفعاليات وزر العرض للوسط */
+    .events-header {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        text-align: center;
+    }
+    .title-wrapper {
+        text-align: center;
+    }
+}
