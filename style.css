@@ -653,6 +653,13 @@ html {
     font-size: 0.8rem;
     opacity: 0.7;
 }
+/* استجابة الشاشات الصغيرة */
+@media (max-width: 992px) {
+    .specialized-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+    .specialized-grid { grid-template-columns: 1fr; }
+}
 /* تنسيق قسم الخدمات الرقمية الجديد */
 .digital-services {
     padding: 100px 5%;
