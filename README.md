@@ -56,7 +56,7 @@ To run this project locally on your machine:
     Clone this repository using Git:
     Bash
 
-    git clone [https://github.com/your-username/ertiwa-platform.git](https://github.com/your-username/ertiwa-platform.git)
+    git clone [https://github.com/tahaniacs/ertiwa-platform.git] (https://github.com/tahaniacs/ertiwa-platform.git)
 
     Navigate into the project directory:
     Bash
