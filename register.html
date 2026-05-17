@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الانضمام - منصة ارتواء</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="register.css">
+</head>
+<body class="registration-page">
+
+    <div class="stepper">
+        <div class="step step--active" id="stepIndicator1">
+            <span class="step__number">1</span>
+            <span class="step__label">البيانات الشخصية</span>
+        </div>
+        <div class="step__line" id="stepLine1"></div>
+        <div class="step" id="stepIndicator2">
+            <span class="step__number">2</span>
+            <span class="step__label">اختيار اللجنة</span>
+        </div>
+        <div class="step__line" id="stepLine2"></div>
+        <div class="step" id="stepIndicator3">
+            <span class="step__number">3</span>
+            <span class="step__label">الأسئلة</span>
+        </div>
+    </div>
+
+    <div class="register-card" id="step1Container">
+        <h2 class="register-card__title">البيانات الشخصية</h2>
+        <p class="register-card__subtitle">أدخل بياناتك الشخصية للانضمام إلى فريق ارتواء</p>
+
+        <form class="register-form" id="personalInfoForm">
+            <div class="form-group">
+                <label class="form-group__label">الاسم الكامل</label>
+                <input type="text" class="form-group__input" placeholder="أدخل اسمك الكامل" required>
+            </div>
+
+            <div class="form-group">
+                <label class="form-group__label">البريد الإلكتروني</label>
+                <input type="email" class="form-group__input" placeholder="example@email.com" required>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label class="form-group__label">المدينة</label>
+                    <input type="text" class="form-group__input" placeholder="أدخل مدينتك" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-group__label">العمر</label>
+                    <input type="number" class="form-group__input" placeholder="أدخل عمرك" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-group__label">التخصص</label>
+                <select class="form-group__select" id="specializationSelect" required>
+                    <option value="" disabled selected>اختر التخصص</option>
+                    <option value="cs">علوم حاسب</option>
+                    <option value="it">تقنية معلومات</option>
+                    <option value="other">غيره</option>
+                </select>
+            </div>
+
+            <div class="form-group" id="otherSpecializationGroup" style="display: none;">
+                <label class="form-group__label">ادخل تخصصك</label>
+                <input type="text" class="form-group__input" id="otherSpecializationInput" placeholder="اكتب تخصصك هنا">
+            </div>
+
+            <button type="submit" class="btn-submit">التالي ←</button>
+            <button type="button" class="btn-secondary" onclick="window.location.href='index.html'">العودة للرئيسية</button>
+        </form>
+    </div>
+
+    <div id="step2Container" style="display: none; width: 100%; max-width: 1200px; margin: 0 auto;">
+        <div class="selection-header" style="text-align: center; margin-bottom: 40px;">
+            <h2 class="register-card__title">اختر اللجنة المناسبة</h2>
+            <p class="register-card__subtitle">اختر القسم الذي يناسب مهاراتك واهتماماتك للانضمام إلى فريق ارتواء</p>
+            <a href="#" class="back-link" id="backToStep1">→ العودة للخطوة السابقة</a>
+        </div>
+
+        <div class="committees-grid">
+            <div class="committee-card">
+                <div class="committee-card__icon"><img src="images/Overlay(6).svg" alt="التقنية"></div>
+                <h3 class="committee-card__name">التقنية</h3>
+                <p class="committee-card__desc">تطوير المواقع والتطبيقات وتقديم الحلول التقنية المتقدمة.</p>
+                <button class="btn-select-committee">اختر اللجنة</button>
+            </div>
+
+            <div class="committee-card">
+                <div class="committee-card__icon"><img src="images/Overlay(1).svg" alt="التصميم"></div>
+                <h3 class="committee-card__name">التصميم</h3>
+                <p class="committee-card__desc">إنشاء هويات بصرية مبتكرة وتصاميم جذابة للمشاريع.</p>
+                <button class="btn-select-committee">اختر اللجنة</button>
+            </div>
+
+            <div class="committee-card">
+                <div class="committee-card__icon"><img src="images/Overlay(2).svg" alt="الفعاليات"></div>
+                <h3 class="committee-card__name">الفعاليات والعلاقات</h3>
+                <p class="committee-card__desc">تنظيم وإدارة الفعاليات التقنية وبناء شراكات استراتيجية.</p>
+                <button class="btn-select-committee">اختر اللجنة</button>
+            </div>
+
+            <div class="committee-card">
+                <div class="committee-card__icon"><img src="images/Overlay(3).svg" alt="المتابعة"></div>
+                <h3 class="committee-card__name">المتابعة والتطوير</h3>
+                <p class="committee-card__desc">متابعة سير العمل وتطوير الأداء لضمان جودة المخرجات.</p>
+                <button class="btn-select-committee">اختر اللجنة</button>
+            </div>
+
+            <div class="committee-card">
+                <div class="committee-card__icon"><img src="images/Overlay(4).svg" alt="الإعلام"></div>
+                <h3 class="committee-card__name">الإعلام</h3>
+                <p class="committee-card__desc">إنتاج المحتوى المرئي والتغطية الإعلامية للفعاليات والأنشطة.</p>
+                <button class="btn-select-committee">اختر اللجنة</button>
+            </div>
+
+            <div class="committee-card">
+                <div class="committee-card__icon"><img src="images/Overlay(5).svg" alt="المحتوى"></div>
+                <h3 class="committee-card__name">المحتوى</h3>
+                <p class="committee-card__desc">كتابة وإعداد المحتوى التقني والتعليمي بأسلوب مبسط وجذاب.</p>
+                <button class="btn-select-committee">اختر اللجنة</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="step3Container" style="display: none; width: 100%; max-width: 650px; margin: 0 auto;">
+        <div class="selection-header" style="text-align: center; margin-bottom: 20px;">
+            <h2 class="register-card__title" id="committeeQuestionTitle">القسم التقني</h2>
+            <p class="register-card__subtitle">أجب على الأسئلة التالية لإكمال طلب الانضمام</p>
+            <div style="text-align: center; margin: 15px 0 5px 0;">
+                <a href="#" class="back-link" id="backToStep2".> → تغيير اللجنة </a>
+            </div>
+        </div>
+
+        <div class="register-card" style="text-align: right; padding: 45px 35px;">
+            <form id="questionsForm">
+                <div id="dynamicQuestions"></div>
+
+                <div class="btn-group" style="margin-top: 35px;">
+                    <button type="submit" class="btn-submit">إرسال الطلب ←</button>
+                    <button type="button" class="btn-secondary" onclick="window.location.href='index.html'" style="margin-top: 5px;">العودة للصفحة الرئيسية</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="successContainer" style="display: none; width: 100%; max-width: 650px; margin: 0 auto; text-align: center;">
+        <div class="register-card" style="padding: 50px 40px;">
+            <div style="font-size: 4.5rem; color: #28B58F; margin-bottom: 20px;">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <h2 class="register-card__title" style="margin-bottom: 15px;">تم إرسال طلبك بنجاح!</h2>
+            <p class="register-card__subtitle" style="margin-bottom: 30px; font-size: 1rem; line-height: 1.6;">
+                شكرًا لاهتمامك بالانضمام إلى فريق منصة ارتواء. تم استلام بياناتك بنجاح، وسيقوم الفريق بمراجعة طلبك والتواصل معك عبر البريد الإلكتروني قريباً.
+            </p>
+            <button type="button" class="btn-submit" onclick="window.location.href='index.html'">العودة للصفحة الرئيسية</button>
+        </div>
+    </div>    
+    <script src="script.js"></script>
+</body>
+</html>
