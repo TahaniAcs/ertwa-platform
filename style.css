@@ -1056,44 +1056,101 @@ html {
         font-size: 0.85rem;
     }
 
-    /* [إصلاح حاسم] تحويل الأقسام، الفعاليات، والخدمات لعمود واحد منسدل بانسيابية */
+    /* ======================================================== 
+   المصلح الشامل لتجاوب الجوال والهيدر ومنع انقسام الشاشة
+   ======================================================== */
+@media (max-width: 768px) {
+    
+    /* 1. إلغاء التمدد الأفقي ومنع تسريب الخلفية الداكنة */
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr) !important; /* تقسيم الإحصائيات الستة إلى صفوف متوازية من بطاقتين فقط */
+        gap: 15px !important;
+        width: 100% !important;
+    }
+
     .specialized-grid, 
     .events-grid, 
     .services-grid {
-        grid-template-columns: 1fr !important;
-        gap: 20px;
+        grid-template-columns: 1fr !important; /* تحويل باقي البطاقات إلى عمود واحد منسدل لأسفل */
+        gap: 20px !important;
     }
 
-    /* جعل الإحصائيات تظهر في عمودين متوازيين بدلاً من التراكم الطولي المزعج */
-    .stats-grid {
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 15px;
-    }
-    .stat-card {
-        padding: 20px 10px;
-    }
-    .stat-number {
-        font-size: 1.8rem;
+    /* 2. إعادة هيكلة وتوسيط الهيدر بالكامل لمنع التداخل البصري */
+    .main-header {
+        position: relative !important; /* تحويله لـ relative لمنعه من تغطية محتوى الهيرو في الجوال */
+        height: auto !important;
+        padding: 20px 5% !important;
+        flex-direction: column !important;
+        gap: 15px !important;
+        background-color: var(--dark-bg) !important;
+        width: 100% !important;
     }
 
-    /* جعل أزرار الـ Hero تمتد بكامل العرض لسهولة الضغط بالإصبع */
+    .header-right-section {
+        flex-direction: column !important;
+        gap: 12px !important;
+        width: 100% !important;
+        align-items: center !important;
+    }
+
+    .nav-links {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        gap: 15px !important;
+        width: 100% !important;
+    }
+
+    .nav-links a {
+        font-size: 0.9rem !important;
+    }
+
+    .btn-login {
+        width: 100% !important;
+        text-align: center !important;
+        padding: 12px 0 !important;
+    }
+
+    /* 3. تكييف أبعاد الشاشة والنصوص الكبيرة */
+    .hero {
+        flex-direction: column !important;
+        text-align: center !important;
+        padding: 60px 5% 120px !important;
+        min-height: auto !important;
+    }
+    .hero-content {
+        text-align: center !important;
+        margin-bottom: 30px !important;
+    }
+    .hero-content h1 {
+        font-size: 2.2rem !important;
+    }
     .hero-btns {
-        flex-direction: column;
-        width: 100%;
+        flex-direction: column !important;
+        width: 100% !important;
+        gap: 10px !important;
     }
     .btn-start, .btn-outline {
-        width: 100%;
-        text-align: center;
+        width: 100% !important;
+        text-align: center !important;
     }
 
-    /* محاذاة ترويسة الفعاليات وزر العرض للوسط */
+    /* ضبط العناوين الرئيسية للأقسام */
+    .dynamic-title, .section-title, .section-main-title, .services-main-title, .stats-main-title, .events-title {
+        font-size: 1.7rem !important;
+        line-height: 1.4 !important;
+        margin-bottom: 35px !important;
+    }
+    
     .events-header {
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-        text-align: center;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 15px !important;
     }
-    .title-wrapper {
-        text-align: center;
-    }
+    /* الكود في نهاية ملفك بعد حذف القوس الزائد ليصبح هكذا تماماً */
+.question-row .form-group__input,
+.question-row .form-group__textarea {
+    width: 100%;
+    margin-top: 5px;
+}
 }
