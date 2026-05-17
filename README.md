@@ -4,7 +4,7 @@ A specialized technical platform operating under the umbrella of **Taqat Certifi
 
 ## 🔗 Live Demo
 You can explore the live, fully interactive platform via the following link:
-[Visit Ertwaa Platform] ([https://tahaniacs.github.io/ertiwa-platform/]) 
+[Visit Ertwaa Platform] ([https://tahaniacs.github.io/ertwa-platform/]) 
 
 ---
 
@@ -56,7 +56,7 @@ To run this project locally on your machine:
     Clone this repository using Git:
     Bash
 
-    git clone [https://github.com/tahaniacs/ertiwa-platform.git] (https://github.com/tahaniacs/ertiwa-platform.git)
+    git clone [https://github.com/tahaniacs/ertwa-platform.git] (https://github.com/tahaniacs/ertwa-platform.git)
 
     Navigate into the project directory:
     Bash
