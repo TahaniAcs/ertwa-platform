@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تقديم طلب خدمة رقمية - منصة ارتواء</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="register.css">
+</head>
+<body class="registration-page">
+
+    <div class="register-card" style="margin-top: 20px; text-align: right;">
+        <div style="text-align: center; margin-bottom: 30px;">
+            <h2 class="register-card__title" style="font-size: 2rem;">بوابة طلب الخدمات الرقمية</h2>
+            <p class="register-card__subtitle" style="margin-bottom: 0;">أدخل تفاصيل مشروعك وسيتواصل معك الفريق الفني لارتواء</p>
+        </div>
+
+        <form id="digitalServiceForm">
+            
+            <div id="formFields">
+                <div class="form-group">
+                    <label class="form-group__label">اسم العميل / الجهة طالبة الخدمة</label>
+                    <input type="text" class="form-group__input" placeholder="أدخل الاسم الكامل أو اسم المنشأة" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-group__label">بريد التواصل الإلكتروني</label>
+                    <input type="email" class="form-group__input" placeholder="name@example.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-group__label">نوع الخدمة الرقمية المطلوبة</label>
+                    <select class="form-group__select" required>
+                        <option value="" disabled selected>اختر الخدمة المستهدفة</option>
+                        <option value="web">تطوير وتصميم المواقع الإلكترونية</option>
+                        <option value="games">تطوير الألعاب التعليمية والترفيهية (Phaser.js / Engines)</option>
+                        <option value="design">تصميم الهويات البصرية والشعارات وواجهات الـ UI/UX</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-group__label">وصف فكرة المشروع المتوقعة</label>
+                    <textarea class="form-group__textarea" rows="4" placeholder="اكتب نبذة مختصرة عن فكرتك والأهداف الأساسية للمشروع..." required></textarea>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-group__label">الميزانية التقديرية (SAR)</label>
+                        <input type="number" class="form-group__input" placeholder="مثال: 5000" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-group__label">المدة الزمنية للتسليم</label>
+                        <input type="text" class="form-group__input" placeholder="مثال: أسبوعين، شهر..." required>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-submit">إرسال تفاصيل الطلب ←</button>
+                <button type="button" class="btn-secondary" onclick="window.location.href='index.html'">العودة للرئيسية</button>
+            </div>
+
+            <div id="orderSuccess" style="display: none; text-align: center; padding: 30px 10px;">
+                <div style="font-size: 4rem; color: var(--jungle-green); margin-bottom: 20px;">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+                <h3 style="color: var(--dark-bg); font-weight: 800; margin-bottom: 15px;">تم استلام طلبك بنجاح!</h3>
+                <p style="color: #64748b; font-size: 0.95rem; line-height: 1.8; margin-bottom: 30px;">
+                    شكرًا لثقتك بمنصة ارتواء الرقمية. تم تحويل تفاصيل المشروع إلى رئيس اللجنة المختصة بنجاح، وسيقوم ممثل الفريق الفني بالتواصل معك عبر البريد الإلكتروني خلال 48 ساعة لمناقشة آليات التنفيذ.
+                </p>
+                <button type="button" class="btn-submit" onclick="window.location.href='index.html'">العودة للصفحة الرئيسية</button>
+            </div>
+
+        </form>
+    </div>
+
+<script>    
+const serviceForm = document.getElementById('digitalServiceForm');
+if (serviceForm) {
+    serviceForm.addEventListener('submit', function(e) {
+        e.preventDefault(); // منع الصفحة من التحديث التلقائي
+        
+        const nameInput = serviceForm.querySelector('input[placeholder*="الاسم الكامل"]');
+        const emailInput = serviceForm.querySelector('input[type="email"]');
+        const typeSelect = serviceForm.querySelector('select');
+        const detailsTextarea = serviceForm.querySelector('textarea');
+        const budgetInput = serviceForm.querySelector('input[placeholder*="5000"]');
+        const timelineInput = serviceForm.querySelector('input[placeholder*="أسبوعين"]');
+
+        if (nameInput && emailInput && typeSelect && detailsTextarea && budgetInput && timelineInput) {
+            
+            // تغيير نص الزر مؤقتاً لإشعار المستخدم بجاري الإرسال
+            const submitBtn = serviceForm.querySelector('.btn-submit');
+            if (submitBtn) submitBtn.textContent = "... جاري إرسال طلبك الآن";
+
+            // تحويل البيانات إلى Query Parameters بناءً على طلب الباك إند المرفوع 
+            const params = new URLSearchParams({
+                client_name: nameInput.value,
+                email: emailInput.value,
+                service_type: typeSelect.options[typeSelect.selectedIndex].text, 
+                description: detailsTextarea.value, 
+                budget: budgetInput.value,
+                timeline: timelineInput.value
+            });
+
+            // إرسال الطلب للمسار الصحيح المرفوع على ريندر 
+            fetch(`https://ertwa-backend.onrender.com/service_request?${params.toString()}`, {
+                method: 'POST',
+                headers: { 'accept': 'application/json' }
+            })
+            .then(res => {
+                if (!res.ok) throw new Error('فشل استجابة السيرفر');
+                return res.json();
+            })
+            .then(data => {
+                console.log('تم حفظ طلب الخدمة بنجاح في قاعدة البيانات:', data);
+                
+                // 2. [تعديل] تفعيل واجهة النجاح المعتمدة في تصميمكِ هنا بعد نجاح اتصال السيرفر 
+                document.getElementById('formFields').style.display = 'none';
+                document.getElementById('orderSuccess').style.display = 'block';
+            })
+            .catch(err => {
+                console.error('خطأ في إرسال طلب الخدمة للباك إند:', err); 
+                alert('عذراً، حدث خطأ أثناء الاتصال بالسيرفر. يرجى المحاولة مرة أخرى.');
+                if (submitBtn) submitBtn.textContent = "إرسال تفاصيل الطلب ←";
+            });
+        }
+    });
+}
+</script>
+    <script src="script.js"></script>
+    <script src="api.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الدخول - منصة ارتواء</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="register.css">
+</head>
+<body class="registration-page">
+
+    <div class="register-card" style="margin-top: 50px;">
+        <h2 class="register-card__title">مرحباً بك مجدداً</h2>
+        <p class="register-card__subtitle">أدخل بيانات حسابك للوصول إلى لوحة التحكم</p>
+
+        <form class="register-form" id="loginForm">
+    <div class="form-group">
+        <label class="form-group__label">البريد الإلكتروني</label>
+        <input type="email" id="email" class="form-group__input" placeholder="example@email.com" required>
+    </div>
+
+    <div class="form-group">
+        <label class="form-group__label">كلمة المرور</label>
+        <input type="password" id="password" class="form-group__input" placeholder="••••••••" required>
+    </div>
+
+    <button type="submit" class="btn-submit">تسجيل الدخول ←</button>
+    <button type="button" class="btn-secondary" onclick="window.location.href='index.html'">العودة للرئيسية</button>
+</form>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+        // محاكاة عملية تسجيل الدخول (يمكن استبدالها بمنطق حقيقي)
+            if (email === 'admin@example.com' && password === 'admin123') {
+                alert('تم تسجيل الدخول بنجاح!');
+                window.location.href = 'dashboard.html';
+            } else {
+                alert('البريد الإلكتروني أو كلمة المرور غير صحيحة.');
+            }
+        });
+    </script>
+    
+<script src="script.js"></script>
+<script src="api.js"></script>
+<script src="main.js"></script>
+</html>
