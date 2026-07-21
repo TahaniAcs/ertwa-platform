@@ -17,7 +17,7 @@
             <p class="register-card__subtitle" style="margin-bottom: 0;">أدخل تفاصيل مشروعك وسيتواصل معك الفريق الفني لارتواء</p>
         </div>
 
-        <form id="digitalServiceForm">
+        <form id="digitalServiceForm" onsubmit="event.preventDefault(); document.getElementById('formFields').style.display='none'; document.getElementById('orderSuccess').style.display='block';">
             
             <div id="formFields">
                 <div class="form-group">
@@ -74,62 +74,5 @@
         </form>
     </div>
 
-<script>    
-const serviceForm = document.getElementById('digitalServiceForm');
-if (serviceForm) {
-    serviceForm.addEventListener('submit', function(e) {
-        e.preventDefault(); // منع الصفحة من التحديث التلقائي
-        
-        const nameInput = serviceForm.querySelector('input[placeholder*="الاسم الكامل"]');
-        const emailInput = serviceForm.querySelector('input[type="email"]');
-        const typeSelect = serviceForm.querySelector('select');
-        const detailsTextarea = serviceForm.querySelector('textarea');
-        const budgetInput = serviceForm.querySelector('input[placeholder*="5000"]');
-        const timelineInput = serviceForm.querySelector('input[placeholder*="أسبوعين"]');
-
-        if (nameInput && emailInput && typeSelect && detailsTextarea && budgetInput && timelineInput) {
-            
-            // تغيير نص الزر مؤقتاً لإشعار المستخدم بجاري الإرسال
-            const submitBtn = serviceForm.querySelector('.btn-submit');
-            if (submitBtn) submitBtn.textContent = "... جاري إرسال طلبك الآن";
-
-            // تحويل البيانات إلى Query Parameters بناءً على طلب الباك إند المرفوع 
-            const params = new URLSearchParams({
-                client_name: nameInput.value,
-                email: emailInput.value,
-                service_type: typeSelect.options[typeSelect.selectedIndex].text, 
-                description: detailsTextarea.value, 
-                budget: budgetInput.value,
-                timeline: timelineInput.value
-            });
-
-            // إرسال الطلب للمسار الصحيح المرفوع على ريندر 
-            fetch(`https://ertwa-backend.onrender.com/service_request?${params.toString()}`, {
-                method: 'POST',
-                headers: { 'accept': 'application/json' }
-            })
-            .then(res => {
-                if (!res.ok) throw new Error('فشل استجابة السيرفر');
-                return res.json();
-            })
-            .then(data => {
-                console.log('تم حفظ طلب الخدمة بنجاح في قاعدة البيانات:', data);
-                
-                // 2. [تعديل] تفعيل واجهة النجاح المعتمدة في تصميمكِ هنا بعد نجاح اتصال السيرفر 
-                document.getElementById('formFields').style.display = 'none';
-                document.getElementById('orderSuccess').style.display = 'block';
-            })
-            .catch(err => {
-                console.error('خطأ في إرسال طلب الخدمة للباك إند:', err); 
-                alert('عذراً، حدث خطأ أثناء الاتصال بالسيرفر. يرجى المحاولة مرة أخرى.');
-                if (submitBtn) submitBtn.textContent = "إرسال تفاصيل الطلب ←";
-            });
-        }
-    });
-}
-</script>
-    <script src="script.js"></script>
-    <script src="api.js"></script>
-    <script src="main.js"></script>
 </body>
 </html>
