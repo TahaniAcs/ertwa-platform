@@ -151,49 +151,6 @@
 
         </div>
     </div>
-<script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const API_BASE = 'https://ertwa-backend.onrender.com';
 
-            // 1. جلب القيادة العليا للمنصة ديناميكياً
-            fetch(`${API_BASE}/platform_leader`)
-                .then(res => res.json())
-                .then(data => {
-                    // نتحقق من وجود العناصر أولاً ثم نحدث النصوص بناءً على رد الـ API
-                    // تأكدي من إضافة id="leader_name" و id="deputy_name" للوسوم المقابلة في ملفكِ
-                    const leaderEl = document.getElementById('leader_name') || document.querySelector('h3:contains("رواء")');
-                    const deputyEl = document.getElementById('deputy_name') || document.querySelector('h3:contains("رياض")');
-                    
-                    if(data.leader_name) leaderEl.textContent = data.leader_name;
-                    if(data.deputy_name) deputyEl.textContent = data.deputy_name;
-                })
-                .catch(err => console.error('خطأ في جلب بيانات القيادة العليا:', err));
-
-            // 2. جلب قادة اللجان والأقسام الستة من قاعدة البيانات
-            fetch(`${API_BASE}/departments`)
-                .then(res => res.json())
-                .then(departments => {
-                    // نمر على الأقسام القادمة ونحدث بطاقات الهيكل بناءً على اسم القسم
-                    departments.forEach(dept => {
-                        // البحث عن البطاقة التي تحتوي على اسم القسم المطابق
-                        const cards = document.querySelectorAll('.container grid > div, [style*="grid-template-columns"] > div');
-                        cards.forEach(card => {
-                            const heading = card.querySelector('h4');
-                            if (heading && heading.textContent.trim() === dept.name.trim()) {
-                                // تحديث أسماء القادة والنواب داخل بطاقة القسم ديناميكياً
-                                const textParagraphs = card.querySelectorAll('p');
-                                if(textParagraphs.length >= 2) {
-                                    textParagraphs[0].textContent = dept.leader;
-                                    textParagraphs[1].textContent = dept.deputy;
-                                }
-                            }
-                        });
-                    });
-                })
-                .catch(err => console.error('خطأ في جلب بيانات الأقسام:', err));
-        });
-    </script>
-    <script src="api.js"></script>
-    <script src="main.js"></script>
 </body>
 </html>
